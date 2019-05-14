@@ -1,3 +1,4 @@
+package Vehicule;
 
 public abstract class Vehicule {
 	protected String mImmatriculation;
