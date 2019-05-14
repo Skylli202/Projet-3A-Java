@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.awt.Point;
 import java.time.LocalDate;
 
 import Vehicule.Voiture;
@@ -21,6 +22,10 @@ public class ajoutVehiculeDlg extends javax.swing.JDialog {
     public ajoutVehiculeDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        Point p = parent.getLocation();
+        
+        getContentPane().setLocation(p);
     }
     
     private Voiture v;
@@ -102,14 +107,16 @@ public class ajoutVehiculeDlg extends javax.swing.JDialog {
 
     private void validerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validerButtonActionPerformed
         // TODO add your handling code here:
-    	String marque = marqueField.getText();
-    	String modele = modeleField.getText();
-    	String immat = immatriculationField.getText();
-    	LocalDate premCircul = LocalDate.parse(circulDateField.getText()); 
-    	
-    	v = new Voiture(marque, modele, immat, premCircul);
+//    	String marque = marqueField.getText();
+//    	String modele = modeleField.getText();
+//    	String immat = immatriculationField.getText();
+//    	LocalDate premCircul = LocalDate.parse(circulDateField.getText()); 
+//    	
+//    	v = new Voiture(marque, modele, immat, premCircul);
+    	v = new Voiture();
     	this.setVisible(false);
         dispose();
+    	System.out.println("yolo");
         
     }//GEN-LAST:event_validerButtonActionPerformed
 

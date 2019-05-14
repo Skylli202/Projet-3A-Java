@@ -20,6 +20,13 @@ public class Voiture extends Vehicule {
 		this.mModel = model;
 		this.mPremCirculation = premCirculation;
 	}
+	
+	public Voiture () {
+		super("AA-000-AA");
+		this.mMarque = "Default";
+		this.mModel =  "Default";
+		this.mPremCirculation = LocalDate.now();
+	}
 
 	@Override
 	public String toString() {

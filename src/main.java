@@ -29,9 +29,11 @@ public class main {
 		System.out.println("Voiture1 : " + voiture1);
 		
 		ParcAutoVoiture parc1 = new ParcAutoVoiture("Skylli Garage");
-                
-                // Im under netbeans now
+		Voiture defCar = new Voiture();
 		
+		parc1.ajoutVoiture(defCar);
+		System.out.println("parc1 main.java : " + parc1);
+        		
 	}
 
 }
