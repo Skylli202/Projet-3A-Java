@@ -5,10 +5,13 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Vehicule.Voiture;
@@ -18,6 +21,10 @@ public class AddCarDlg extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	
 	private Voiture v;
+	private JTextField marqueField;
+	private JTextField modeleField;
+	private JTextField immatField;
+	private JTextField premImmatField;
 
 	/**
 	 * Launch the application.
@@ -40,7 +47,43 @@ public class AddCarDlg extends JDialog {
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(new GridLayout(1, 0, 0, 0));
+		contentPanel.setLayout(new GridLayout(4, 2, 0, 0));
+		{
+			JLabel marqueLabel = new JLabel("Marque :");
+			contentPanel.add(marqueLabel);
+		}
+		{
+			marqueField = new JTextField();
+			contentPanel.add(marqueField);
+			marqueField.setColumns(10);
+		}
+		{
+			JLabel modeleLabel = new JLabel("Modèle :");
+			contentPanel.add(modeleLabel);
+		}
+		{
+			modeleField = new JTextField();
+			contentPanel.add(modeleField);
+			modeleField.setColumns(10);
+		}
+		{
+			JLabel immatLabel = new JLabel("Immatriculation :");
+			contentPanel.add(immatLabel);
+		}
+		{
+			immatField = new JTextField();
+			contentPanel.add(immatField);
+			immatField.setColumns(10);
+		}
+		{
+			JLabel premImmatLabel = new JLabel("Première Immat. \n yyyy-MM-dd");
+			contentPanel.add(premImmatLabel);
+		}
+		{
+			premImmatField = new JTextField();
+			premImmatField.setColumns(10);
+			contentPanel.add(premImmatField);
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -74,8 +117,15 @@ public class AddCarDlg extends JDialog {
 	}
 	
 	private void okButtonAction() {
-		v = new Voiture();
-		System.out.println("I'm the OK Button from a AddCarDlg being clicked");
+    	String marque = marqueField.getText();
+    	String modele = modeleField.getText();
+    	String immat = immatField.getText();
+    	LocalDate premCircul = LocalDate.parse(premImmatField.getText()); 
+    	
+    	v = new Voiture(marque, modele, immat, premCircul);
+		
+		this.setVisible(false);
+        dispose();
 	}
 	
 	private void cancelButtonAction() {

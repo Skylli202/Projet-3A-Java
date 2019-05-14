@@ -21,11 +21,19 @@ import Parc.ParcAutoVoiture;
  */
 public class MainWindow extends JFrame {
 	private JFrame frame;
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	
 
 	private ParcAutoVoiture parc1;
-
+	
+	private void initNonGUIcomponents() {
+		parc1 = new ParcAutoVoiture("MainWindow Parc");
+	}
+	
 	public MainWindow() {
+		initNonGUIcomponents();
+	
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		
 		frame = new JFrame("My App :  Gestion de Parc");
 		frame.setSize(500, 500);
 		frame.setLayout(new BorderLayout());
@@ -59,5 +67,9 @@ public class MainWindow extends JFrame {
 	private void ajoutVoitureActionPerformed(java.awt.event.ActionEvent evt) {
 		AddCarDlg dlg = new AddCarDlg();
 		dlg.setVisible(true);
+		
+		parc1.ajoutVoiture(dlg.getVoiture());
+		
+		System.out.println("MainWindow : " + parc1.contains(dlg.getVoiture()));
 	}
 }

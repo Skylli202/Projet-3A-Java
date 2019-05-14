@@ -31,4 +31,8 @@ public class ParcAutoVoiture {
 	public boolean contains(Voiture v) {
 		return listVoiture.contains(v);
 	}
+	
+	public ArrayList<Voiture> getArray(){
+		return listVoiture;
+	}
 }
